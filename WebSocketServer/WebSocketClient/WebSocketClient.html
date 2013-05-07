@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>
+            WebSocketClient!
+        </title>
+    </head>
+    <body>
+        <input type="text" id="txtMensagem">
+        <input type="button" id="btnMensagem" value="Mandar Mensagem">
+
+        <div id="container">
+
+        </div>
+
+        <script>
+
+            var webSocket = new WebSocket("ws://localhost:8081/WebSocket");
+            var container = document.getElementById("container");
+            var btnMandar = document.getElementById("btnMensagem");
+
+            btnMandar.onclick = function ()
+            {
+                webSocket.send(document.getElementById("txtMensagem").value);
+            }
+
+            webSocket.onopen = function ()
+            {
+                container.innerHTML += "Conexão iniciada!";
+            }
+
+            webSocket.onmessage = function (mensagem)
+            {
+                container.innerHTML += mensagem;
+            }
+
+            webSocket.onclose = function ()
+            {
+                container.innerHTML += "Conexão terminada.";
+            }
+        </script>
+
+    </body>
+</html>
