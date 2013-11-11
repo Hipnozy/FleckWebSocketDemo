@@ -1,1 +1,1 @@
-Simple Demo about development with Fleck and HTML5
+Simple Demo/Sample about development with Fleck and HTML5
